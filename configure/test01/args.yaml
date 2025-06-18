@@ -1,0 +1,4 @@
+chunk_size: 1MB
+message: test01
+structure: structure.csv
+total_size: 10MB

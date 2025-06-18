@@ -1,0 +1,31 @@
+autotest
+    configure.py
+    
+    configure
+        test1
+            args.yaml (保存某次测试传入的参数)
+            structure.csv (对应的网络结构)
+            web.conf (网络配置)
+
+            algorithm
+                aimd
+                    conconfig.ini
+                    preconfig.ini
+                    aggregatorcat.ini
+                    aggregatorput.ini
+                rubic
+                    ......
+
+
+        2025-06-07 20:25:01
+            (类似结构)
+    
+    logs
+        2025-06-07 20:26:00 run-test1, 2025-06-07 20:25:00
+            log(运行对应配置后的log)
+
+
+
+
+csv
+from to bw loss delay max_queue_number

@@ -1,36 +1,46 @@
-Mini-NDN
-========
+python3 configure.py structure.csv -m "bw100,delay10,loss0" --chunk-size 3MB --total-size 100MB
+python3 autotest.py -a aimd "bw100,dealy10,loss0"
 
-If you are new to the NDN community of software generally, read the
-[Contributor's Guide](https://github.com/named-data/.github/blob/master/CONTRIBUTING.md).
+-m 后面指定的参数即是储存文件夹的名字，不输入默认使用时间格式 year-month-day, HOUR-MINUTE-SECOND (eg. 2025-06-09, 00:00:00)
+autotest需要指定这个储存文件夹的名字
 
-### What is Mini-NDN?
+传输的文件路径还没有输入，可以查找关键词 TO BE COMPLETED
+这个坑在实现autotest的时候再填
+↑(Dev v2.1)已填坑，删掉了
 
-Mini-NDN is a lightweight networking emulation tool that enables testing, experimentation, and
-research on the NDN platform based on [Mininet](https://github.com/mininet/mininet).
-Mini-NDN uses the NDN libraries, NFD, NLSR, and tools released by the
-[NDN project](http://named-data.net/codebase/platform/) to emulate an NDN network on a single system.
+文件结构
+```
+autotest
+    configure.py
+    autotest.py
+    exec
+        aggapps
+            aggregator (从对应main.cpp编译来的, 在Dev v2.1对main.cpp有所修改)
+        catapps
+            consumer
+        putapps
+            producer
 
-Mini-NDN is open and free software licensed under the GPL 3.0 license. Mini-NDN is free to all
-users and developers. For more information about licensing details and limitations,
-please refer to [COPYING.md](COPYING.md).
+    logs (暂未完成)
 
-The first release of Mini-NDN is developed by members of the NSF-sponsored NDN project team.
-Mini-NDN is open to contribution from the public.
-For more details, please refer to [AUTHORS.rst](AUTHORS.rst).
-Bug reports and feedback are highly appreciated and can be made through our
-[Redmine site](http://redmine.nadmed-data.net/projects/mini-ndn) and the
-[mini-ndn mailing list](http://www.lists.cs.ucla.edu/mailman/listinfo/mini-ndn).
+    configure
+        test1
+            args.yaml (保存某次测试传入的参数)
+            structure.csv (对应的网络结构)
+            web.conf (网络配置)
 
-### Documentation
+            algorithm
+                aimd
+                    conconfig.ini
+                    preconfig.ini
+                    aggregatorcat.ini (Dev v2.2:其实这个没用，晚点处理一下)
+                    aggregatorput.ini
+                rubic
+                    conconfig.ini
+                    preconfig.ini
+                    aggregatorcat.ini 
+                    aggregatorput.ini
+        2025-06-07 20:25:01
+            (类似结构)
 
-Please refer to http://minindn.memphis.edu/ or [docs/index.rst](docs/index.rst) for installation, usage, and other documentation.
-The documentation can be built using:
 
-    ./docs/build.sh
-
-and is available under `docs/_build/html`.
-
-
-### cat and put apps
-1. 检查链路丢包，积压数据包等情况  pro0 tc -s qdisc show dev pro0-eth0 con0 tc -s qdisc show dev con0-eth0
